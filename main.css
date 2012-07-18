@@ -1,0 +1,11 @@
+#board {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  height: 100%;
+}
+
+.swimlane {
+  display: -webkit-box;
+  -webkit-box-flex: 1;
+  border: solid 1px black;
+}
