@@ -5,20 +5,39 @@
     <link rel="stylesheet" href="main.css"/>
   </head>
   <body>
-  <div id="board">
-    <div id="roles" class="swimlane">
-      1
+    <div id="board_outline" style="width:300px; height: 300px; overflow: scroll;">
+      <svg id="board_svg" width="500px" height="500px" viewBox="0 0 1500 1500" xmlns="http://www.w3.org/2000/svg">
+        <symbol id="postit">
+          <rect x="0" width="50" height="50" fill="none" stroke="black" stroke-width="1" />
+          <foreignObject x="5" y="5" width="40" height="40"> 
+            <body xmlns="http://www.w3.org/1999/xhtml">
+              <div>Here is a <strong>paragraph</strong> that requires <em>word wrap</em></div>
+            </body>
+          </foreignObject>
+        </symbol>
+        <g id="columns" fill="none" stroke="black" stroke-width="1">
+          <rect x="0" width="300" height="500" />
+          <rect x="300" width="300" height="500" />
+          <rect x="600" width="300" height="500" />
+          <rect x="900" width="300" height="500" />
+          <rect x="1200" width="300" height="500" />
+        </g>
+        <g id="swimlanes" fill="none" stroke="black" stroke-width="1">
+          <rect x="0" y="0" width="1500" height="50" />
+          <rect x="0" y="50" width="1500" height="150" />
+          <rect x="0" y="200" width="1500" height="150" />
+          <rect x="0" y="350" width="1500" height="150" />
+        </g>
+        <use x="20" y="110" xlink:href="#postit" />
+
+        <rect x="20" y="310" width="50" height="50" fill="none" stroke="black" stroke-width="1" draggable="true" />
+        <foreignObject x="25" y="315" width="40" height="40"> 
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <div style="font-size: 6">Here is a <strong>paragraph</strong> that requires <em>word wrap</em></div>
+            </body>
+        </foreignObject>
+      </svg>
     </div>
-    <div id="projects" class="swimlane">
-      2
-    </div>
-    <div id="handovers" class="swimlane">
-      3
-    </div>
-    <div id="dev" class="swimlane">
-      4
-    </div>
-  </div>
     <!--script src="lib/angular/angular.js"></script-->
   </body>
 </html>
