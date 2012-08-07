@@ -1,0 +1,44 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Foreign Object</title>
+    <link rel="stylesheet" href="main.css"/>
+  </head>
+  <body>
+  <div id="board">
+  </div>
+  <div id="fred"> This is Fred !! </div>
+  <div id="foo"> This is Foo !! </div>
+
+    <!--script src="lib/angular/angular.js"></script-->
+    <script src="raphael.js"></script>
+    <script>
+      var ns = "http://www.w3.org/2000/svg";
+
+      var createPostIt = function(rp, x, y, width, height, id) {
+        var gr = rp.set();
+        gr.push ( rp.rect(x, y, width, 5).attr({fill: "white"}));
+        gr.push ( rp.rect(x, y + 5, width, height-5 ).attr({fill: "white"}) );
+        var fo = document.createElementNS( ns, "foreignObject");
+        fo.setAttribute("x", x);
+        fo.setAttribute("y", y+5);
+        fo.setAttribute("width", width);
+        fo.setAttribute("height", height-5);
+        var html = document.getElementById(id);
+        fo.appendChild(html);
+        paper.canvas.appendChild(fo);
+        gr.push(fo);
+        return gr;
+      };
+
+      var paper = Raphael("board", 1000, 1000);
+      var p1 = createPostIt(paper, 10, 10, 50, 50, 'fred');
+      var p2 = createPostIt(paper, 70, 70, 50, 50, 'foo');
+
+      p1.click(function() {
+        p1.animate({transform: "t100,0"}, 1000);
+      });
+
+    </script>
+  </body>
+</html>

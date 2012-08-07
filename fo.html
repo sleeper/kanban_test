@@ -1,0 +1,42 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Foreign Object</title>
+    <link rel="stylesheet" href="main.css"/>
+  </head>
+  <body>
+  <div id="board">
+  </div>
+  <div id="fred"> This is Fred !! </div>
+  <div id="foo"> This is Foo !! </div>
+
+    <!--script src="lib/angular/angular.js"></script-->
+    <script src="raphael.js"></script>
+    <script>
+      var ns = "http://www.w3.org/2000/svg";
+      var paper = Raphael("board", 1000, 1000);
+      var fo = document.createElementNS( ns, "foreignObject");
+      fo.setAttribute("x", 10);
+      fo.setAttribute("y", 10);
+      fo.setAttribute("width", 60);
+      fo.setAttribute("height", 60);
+      var fred = document.getElementById("fred");
+      fo.appendChild(fred);
+      paper.canvas.appendChild(fo);
+
+      var rect = paper.rect(100, 100, 100, 100);
+      var nfo = document.createElementNS(ns, "foreignObject");
+      nfo.setAttribute("x", 10);
+      nfo.setAttribute("y", 10);
+      nfo.setAttribute("width", 60);
+      nfo.setAttribute("height", 60);
+      var body = document.createElement('html');
+      var foo = document.getElementById("foo");
+      body.appendChild( foo );
+      nfo.appendChild(body);
+      paper.canvas.appendChild(nfo);
+      rect.node.appendChild( nfo );
+
+    </script>
+  </body>
+</html>

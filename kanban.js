@@ -68,6 +68,7 @@ pi1.onDragOver(function(p) {
   console.log("Postit on cell: " + p.name);
 });
 pi1.name = "pi1";
+pi1.node.id = "pi1";
 
 var pi2 = board.rect(80, 10, 50, 50);
 pi2.name = "postit 2";
@@ -105,14 +106,29 @@ up = function () {
 postits.attr({fill: "white"});
 postits.drag( move, start, up );
 
-var fo = document.createElementNS(board.svgns,"foreignObject");
-pi1.node.appendChild(fo);
+var fo = document.createElementNS("http://www.w3.org/2000/svg","foreignObject");
+//fo.setAttribute("x", pi1.attr("x"));
+//fo.setAttribute("y", pi1.attr("y"));
+fo.setAttribute("width", "50");
+fo.setAttribute("height", "50");
 var body = document.createElement("body");
 fo.appendChild(body);
 var div = document.createElement("div");
 body.appendChild(div);
 div.innerHTML = "Test";
+pi1.node.appendChild(fo);
 
+// fo = document.createElementNS("http://www.w3.org/2000/svg","foreignObject");
+// fo.setAttribute("x", pi1.attr("x"));
+// fo.setAttribute("y", pi1.attr("y"));
+// fo.setAttribute("width", "50");
+// fo.setAttribute("height", "50");
+// 
+// 
+// svgRoot = board.canvas;
+// svgRoot.appendChild( fo );
+// fo.appendChild(div);
+// 
 // var columns = paper.set();
 // columns.push(
 //   paper.rect(0, 0, 200, 1000),
