@@ -7,11 +7,13 @@
   <body>
   <div id="board">
   </div>
-  <div id="fred"> This is Fred !! </div>
-  <div id="foo"> This is Foo !! </div>
+  <div id="fred"i style="white-space:nowrap"> This is Fred iand a very very long text!! </div>
+  <div id="foo"> This is Foo and a very very long text !! </div>
 
     <!--script src="lib/angular/angular.js"></script-->
     <script src="raphael.js"></script>
+    <script src="jquery-1.7.2.min.js"></script>
+    <script src="jquery.quickfit.js"></script>
     <script>
       var ns = "http://www.w3.org/2000/svg";
 
@@ -25,7 +27,10 @@
         fo.setAttribute("width", width);
         fo.setAttribute("height", height-5);
         var html = document.getElementById(id);
+        var h = $('#'+id);
+
         fo.appendChild(html);
+        h.quickfit();
         paper.canvas.appendChild(fo);
         gr.push(fo);
         return gr;
