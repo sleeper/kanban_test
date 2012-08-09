@@ -41,7 +41,10 @@
       var p2 = createPostIt(paper, 70, 70, 50, 50, 'foo');
 
       p1.click(function() {
-        p1.animate({transform: "t100,0"}, 1000);
+//        p1.animate({transform: "t100,0"}, 1000);
+        p1[0].translate(100,0);
+        p1[1].translate(100,0);
+        p1[2].setAttribute("transform", "translate(100,0)");
       });
 
     </script>
